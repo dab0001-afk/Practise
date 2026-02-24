@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<style>
+
+header{
+	padding:50px 20px 20px 20px;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.headbox{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.dropbtn{
+	background-color: #04AA6D;
+	color:white;
+	padding:16px;
+	font-size:16px;
+	border:none;
+}
+
+.dropdown{
+	position: absolute;
+	display: inline-block;
+	top:118%;
+	right:80px;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+.dropdown-content {
+	display: none;
+	position:absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a{
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display:block;
+}
+
+.dropdown-content a:hover {background-color:#ddd;}
+
+.dropdown:hover .dropdown-content{display:block;}
+
+.dropdown:hover .dropbtn{background-color:#3e8e41;}
+
+
+body{
+background-image:url('PepsiBackground.jpg');
+background-repeat: no-repeat;
+background-attachment:fixed;
+background-size:100% 100%;
+}
+
+.content{
+	display:flex;
+	justify-content:space-around;
+	align-items:stretch;
+	padding:40px 20px;
+	text-align: center;
+}
+.box{
+	flex:1;
+	margin:10px;
+	padding:30px;
+	background-color: rgba(173,216,230,0.7);
+	border-radius:8px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.box.red{
+	background-color: rgba(255,100,100,0.8);
+	color:white;
+}
+
+.image-links{
+	display: flex;
+	justify-content: center;
+	gap:20px;
+	width: 100%;
+	margin-top:40px;
+	padding: 0 10px 40px;
+}
+
+.image-wrapper {
+	display:inline-block;
+	margin: 0 10px;
+	text-align: center;
+	background-color: rgba(255,255,255,0.7);
+	border-radius:8px;
+	padding:10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	transform-style: preserve-3d;
+	transform:perspective(800px);
+	transition: transform 0.3s ease,box-shadow 0.3s ease;
+	position:relative;
+	overflow:hidden;
+}
+
+.glow{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	border-radius:8px;
+	pointer-events:none;
+	background: radial-gradient(circle at var(--x) var(--y),rgba(100,180,255,0.6), transparent 60%);
+	opacity: 0;
+	z-index: 10;
+}
+
+.image-wrapper:hover .glow{
+	opacity:1;
+}
+	
+
+.image-wrapper p 
+.image-wrapper a{
+	margin: 10px 0;
+	font-weight: bold;
+	position:relative;
+	z-index:2;
+}
+
+.image-wrapper a img {
+	transition:transform 0.3s;
+	position: relative;
+	z-index:1;
+}
+
+.image-wrapper a img:hover{
+	transform: scale(1.05);
+}	
+
+
+
+
+</style>
+
+<body>
+	<header>
+		<div class = "headbox">
+		<div>
+		<h1> Pepsi Man </h1>
+		<h3> A website about Pepsi Man </h3>
+		</div>
+		<div class="dropdown">
+		<button class = "dropbtn">Menu</button>
+		<div class = "dropdown-content">
+		<a href = "PEPSIMADNESS.html">PEPSI MADNESS</a>
+		</div>
+		</div>
+		</div>
+	</header>
+	<section class = "content">
+		<div class = "box">
+		<p> Welcome to the Pepsi Man website where you'll learn all sorts of things about Pepsi and Man!<br>
+		Make sure to have a cup of Pepsi next to you while using this website </p>
+		</div>
+		<div class = "box red">
+		<p style = 'background-color: Red'>Warning! No Cola allowed!</p>
+		</div>
+	</section>
+
+	<section class = "image-links">
+		<div class = "image-wrapper">
+		<div class="glow"></div>
+		<p>Click here to see PEPSI MADNESS!</p>
+		<a href = "PEPSIMADNESS.html"><img src = "PepsiMad.jpg" alt="Link to PEPSIMADNESS" height = '200' width = '200'></a>
+		</div>
+		<div class = "image-wrapper">
+		<div class="glow"></div>
+		<p>Click here to drink some Pepsi!</p>
+		<a href = "https://www.pepsi.com/landing"><img src = "PepsiManGIF.gif" alt="Link to Pepsi Website" height = '200' width = '200'></a>
+		</div>
+	</section>
+<a href = "https://en.wikipedia.org/wiki/Pepsiman_(video_game)" style = 'color:White;'><img src = "PepsiMan.jpg" width = "200" height = "250" style = 'position:fixed;bottom:0px;right:0px;' alt = "An image of Pepsi first dayview on the PepsiMan comics"></a>
+<button style="display: block; margin: auto;" onclick="document.location='https://www.youtube.com/watch?v=6y1okSNHQoU'" ><h2>Click here for a video of Pepsi Man </h2></button>
+
+	<script>
+	const wrappers = document.querySelectorAll('.image-wrapper')
+	
+	wrappers.forEach(wrapper => {
+		const glow = wrapper.querySelector('.glow');
+		
+		wrapper.addEventListener('mousemove',e=>{
+			const rect = wrapper.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+			
+			const rotateY = ((x/rect.width)-0.5)*20;
+			const rotateX = ((y/rect.height)-0.5)*20;
+			
+			wrapper.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+			 glow.style.setProperty('--x', `${x}px`);
+			 glow.style.setProperty('--y', `${y}px`)
+		});
+
+		wrapper.addEventListener('mouseleave',() => {
+			wrapper.style.transform = 'perspective(800px) rotateX(0) rotateY(0)';
+		});
+	});
+	</script>
+
+</body>
+
+
+
+
+</html>
